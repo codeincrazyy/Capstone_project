@@ -20,6 +20,7 @@ class InventoryItemViewSet(viewsets.ModelViewSet):
     search_fields = ['name', 'description']
     ordering_fields = ['name', 'quantity', 'price', 'date_added']
     filterset_class = InventoryItemFilter
+    
     def perform_create(self, serializer):
         item = serializer.save(owner=self.request.user)
         # Log initial quantity change from 0 to provided value
