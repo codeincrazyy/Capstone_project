@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "django_filters",
     "inventory",
+    "django_extensions",
 ]
+
+APPEND_SLASH = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

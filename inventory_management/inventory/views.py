@@ -6,6 +6,8 @@ from .serializers import InventoryItemSerializer, InventoryChangeSerializer
 from .permissions import IsOwnerOrReadOnly
 from rest_framework.serializers import ModelSerializer
 from django.contrib.auth import get_user_model
+from .filters import InventoryItemFilter
+
 
 User = get_user_model()
 
@@ -17,7 +19,7 @@ class InventoryItemViewSet(viewsets.ModelViewSet):
     filterset_fields = ['category']
     search_fields = ['name', 'description']
     ordering_fields = ['name', 'quantity', 'price', 'date_added']
-
+    filterset_class = InventoryItemFilter
     def perform_create(self, serializer):
         item = serializer.save(owner=self.request.user)
         # Log initial quantity change from 0 to provided value
