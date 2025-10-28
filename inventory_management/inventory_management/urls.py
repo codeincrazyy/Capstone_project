@@ -2,10 +2,11 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from inventory.views import RegisterView
+from django.http import HttpResponse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('', lambda request: HttpResponse("Welcome to the Inventory Management API!")),
     # Inventory app routes
     path('api/', include('inventory.urls')),  # /api/items/ and /api/changes/
 
